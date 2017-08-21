@@ -32,8 +32,20 @@ servers = (
     address = "irc.undernet.org";
     chatnet = "Undernet";
     port = "6667";
+  },
+  {
+    address = "localhost";
+    chatnet = "Bitlbee";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+    autoconnect = "yes";
   }
 );
+
+chatnets = {
+  Bitlbee = { type = "IRC"; autosendcmd = "/^msg -bitlbee &bitlbee identify PASSWORD; wait -bitlbee 2000"; };
+};
 
 chatnets = {
   DALnet = {
