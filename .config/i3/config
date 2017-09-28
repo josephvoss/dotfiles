@@ -133,10 +133,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 2 px or 2 ppt
+        bindsym k resize grow height 2 px or 2 ppt
+        bindsym l resize shrink height 2 px or 2 ppt
+        bindsym semicolon resize grow width 2 px or 2 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -187,6 +187,9 @@ bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
 
 # Set lock
 exec --no-startup-id xautolock -time 10 -locker '~/bin/fuzzy_lock.sh'
+
+# Run wal
+exec --no-startup-id wal -t -R
 
 # Set Screenshot
 bindsym $mod+Shift+s exec scrot

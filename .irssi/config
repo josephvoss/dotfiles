@@ -44,10 +44,10 @@ servers = (
 );
 
 chatnets = {
-  Bitlbee = { type = "IRC"; autosendcmd = "/^msg -bitlbee &bitlbee identify PASSWORD; wait -bitlbee 2000"; };
-};
-
-chatnets = {
+  Bitlbee = {
+    type = "IRC";
+    autosendcmd = "/^msg -bitlbee &bitlbee identify billybob5; wait -bitlbee 2000";
+  };
   DALnet = {
     type = "IRC";
     max_kicks = "4";
@@ -118,6 +118,7 @@ chatnets = {
   };
 };
 
+
 channels = (
   { name = "#lobby"; chatnet = "EsperNet"; autojoin = "No"; },
   { name = "#freenode"; chatnet = "Freenode"; autojoin = "No"; },
@@ -128,6 +129,8 @@ channels = (
   { name = "#netfuze"; chatnet = "NetFuze"; autojoin = "No"; },
   { name = "#oftc"; chatnet = "OFTC"; autojoin = "No"; },
   { name = "silc"; chatnet = "SILC"; autojoin = "No"; }
+  { name = "#gang"; chatnet = "Bitlbee"; autojoin = "No"; }
+  { name = "#gang_austin"; chatnet = "Bitlbee"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -395,3 +398,37 @@ settings = {
     beep_msg_level = "HILIGHT INVITES MSGS NOTICES CTCPS DCC DCCMSGS";
   };
 };
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "&bitlbee";
+        tag = "Bitlbee";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "ashleywatson";
+        tag = "Bitlbee";
+      }
+    );
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#gang_austin";
+        tag = "Bitlbee";
+      }
+    );
+  };
+};
+mainwindows = { 1 = { first_line = "1"; lines = "62"; }; };

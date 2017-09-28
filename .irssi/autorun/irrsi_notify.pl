@@ -1,1 +1,0 @@
-/home/jvoss14/.irssi/scripts/irrsi_notify.pl

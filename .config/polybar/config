@@ -19,16 +19,24 @@
 ;secondary = #e60053
 ;alert = #bd2c40
 
-background = #191716
-background-alt = #0f0e0d
-foreground = #daba8b
-foreground-alt = #383332
-primary = #845336
-secondary = #57553c
-alert = #8c4f4a
+;background = #191716
+;background-alt = #0f0e0d
+;foreground = #daba8b
+;foreground-alt = #383332
+;primary = #845336
+;secondary = #57553c
+;alert = #8c4f4a
+
+background = ${xrdb:color0}
+background-alt = ${xrdb:color1}
+foreground = ${xrdb:color7}
+foreground-alt = ${xrdb:color2}
+primary = ${xrdb:color3}
+secondary = ${xrdb:color4}
+alert = ${xrdb:color5}
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 27
 ;offset-x = 1%

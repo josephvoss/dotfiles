@@ -1,7 +1,8 @@
 execute pathogen#infect()
 Helptags
 "let g:airline_theme='base16_isotope'
-let g:airline_theme='base16_tomorrow'
+"let g:airline_theme='base16_tomorrow'
+let g:airline_theme='wal'
 let g:airline_powerline_fonts='1'
 let g:airline#extensions#tabline#enabled = 1
 
@@ -21,7 +22,7 @@ set background=dark
 " highlight all on glob match
 set hlsearch
 
-set tw=79
+"set tw=79
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -34,3 +35,11 @@ set expandtab
 
 " Enable scrolling
 set mouse=a
+
+call plug#begin()
+
+Plug 'dylanaraps/wal.vim'
+
+call plug#end()
+
+colorscheme wal
