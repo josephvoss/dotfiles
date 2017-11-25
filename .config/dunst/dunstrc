@@ -1,5 +1,5 @@
 [global]
-    font = Source Code Pro for Powerline 10
+    font = Roboto Mono for Powerline 10
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -133,7 +133,7 @@
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
-    startup_notification = true
+#    startup_notification = true
     
     # dmenu path.
     dmenu = /usr/bin/dmenu -p dunst:

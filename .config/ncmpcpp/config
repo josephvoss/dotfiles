@@ -4,3 +4,7 @@ progressbar_look = "─╼ "
 
 song_window_title_format = "MPD: {%a > }{%t}{ [%b{ Disc %d}]}|{%f}"
 
+visualizer_in_stereo = "yes"
+visualizer_type = "wave_filled"
+visualizer_look = "+|"
+

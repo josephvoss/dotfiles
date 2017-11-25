@@ -155,7 +155,6 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 #bar {
 #        status_command i3status --config ~/.config/i3status.conf
-exec --no-startup-id polybar -c ~/.config/polybar/config example > /home/jvoss14/log_i3
 #        status_command polybar example
 #        position top
 #}
@@ -164,11 +163,12 @@ exec --no-startup-id polybar -c ~/.config/polybar/config example > /home/jvoss14
 # ============================================================
 
 # Set background
-exec --no-startup-id feh --bg-scale ~/Pictures/Snowy-Wood.png
+#exec --no-startup-id feh --bg-scale ~/Pictures/Snowy-Wood.png
 #exec --no-startup-id feh --bg-scale ~/Pictures/Space_lake.jpg
 #exec --no-startup-id feh --bg-scale /usr/share/backgrounds/gnome/Icescape.jpg
 exec --no-startup-id nohup xcompmgr 
 exec --no-startup-id nohup redshift
+exec --no-startup-id nohup devilspie -a
 
 # Power saving
 exec --no-startup-id xset +dpms
@@ -189,7 +189,9 @@ bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
 exec --no-startup-id xautolock -time 10 -locker '~/bin/fuzzy_lock.sh'
 
 # Run wal
-exec --no-startup-id wal -t -R
+#exec --no-startup-id polybar example
+exec_always --no-startup-id /home/jvoss14/bin/polybar.sh &
+exec --no-startup-id mpd
 
 # Set Screenshot
 bindsym $mod+Shift+s exec scrot

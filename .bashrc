@@ -10,6 +10,7 @@ fi
 # User specific aliases and functions
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias irc='ssh server -t "tmux at -t Chat"'
 
 # base 16
 
@@ -17,7 +18,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 #[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 #export TERMINAL=urxvt256c
-export TERMINAL=gnome-terminal
+#export TERMINAL=gnome-terminal
+export TERMINAL='st'
 
 
 if [ $TERM == 'rxvt-unicode-256color' ]; then
