@@ -1,0 +1,3 @@
+#wal -t -a 75 -o ~/bin/wal-set -i ~/Pictures/Lofoten.jpg
+arr=(~/Day/*)
+~/.local/bin/wal -t -a 75 -o ~/bin/wal-set -i ${arr[$(($RANDOM % ${#arr[@]}))]}

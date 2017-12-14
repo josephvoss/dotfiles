@@ -16,6 +16,22 @@ set $mod Mod4
 #font pango:monospace 8
 font pango:terminus 8
 
+# Set colors
+#set_from_resource $fg i3wm.color7 #f0f0f0
+#set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color0 #f0f0f0
+set_from_resource $b2 i3wm.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $b2     $b2     $fg  $b2       $b2
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -169,6 +185,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id nohup xcompmgr 
 exec --no-startup-id nohup redshift
 exec --no-startup-id nohup devilspie -a
+exec --no-startup-id nohup ~/bin/start_sun-switcher.sh
 
 # Power saving
 exec --no-startup-id xset +dpms
@@ -177,7 +194,14 @@ exec --no-startup-id xset +dpms
 gaps inner 10
 gaps outer 0
 smart_gaps on
-new_window none
+#new_window none
+
+# set borders
+new_window normal
+for_window [class="^.*"] border pixel 2
+
+# set floating
+for_window [window_role="pop-up"] floating enable
 
 # Set function keys
 bindsym XF86MonBrightnessUp exec ~/bin/backlight +2
@@ -191,6 +215,7 @@ exec --no-startup-id xautolock -time 10 -locker '~/bin/fuzzy_lock.sh'
 # Run wal
 #exec --no-startup-id polybar example
 exec_always --no-startup-id /home/jvoss14/bin/polybar.sh &
+#exec_always --no-startup-id /home/jvoss14/bin/sun-switcher.sh &
 exec --no-startup-id mpd
 
 # Set Screenshot
