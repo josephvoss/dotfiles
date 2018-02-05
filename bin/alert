@@ -1,0 +1,9 @@
+#! /bin/bash
+
+while true; do
+    if [ $@ ]; then 
+        echo -e '\a'; 
+    fi; 
+    sleep 5; 
+done
+

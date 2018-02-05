@@ -1,4 +1,18 @@
 #wal -t -a 75 -o ~/bin/wal-set -i ~/Pictures/Space_lake.jpg
 #wal -t -a 75 -o ~/bin/wal-set -i ~/Pictures/Iceland.jpg
 arr=(~/Night/*)
-~/.local/bin/wal -t -a 75 -o ~/bin/wal-set -i ${arr[$(($RANDOM % ${#arr[@]}))]}
+
+if ! [ -e /tmp/wal_numbers.txt ]; then
+    old_number=$(($RANDOM % ${#arr[@]}))
+    echo -e "day: 0\nnight: 0" > /tmp/wal_numbers.txt
+else
+    old_number=$(grep "night" /tmp/wal_numbers.txt | awk '{print $NF}')
+fi
+
+#number=$(($RANDOM % ${#arr[@]}))
+echo $(($(($old_number + 1)) % ${#arr[@]}))
+number=$(($(($old_number + 1)) % ${#arr[@]}))
+sed -i "s/night: .*/night: $number/" /tmp/wal_numbers.txt
+
+file=${arr[$number]}
+~/.local/bin/wal -t -a 75 -o ~/bin/wal-set -i $file
