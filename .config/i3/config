@@ -202,6 +202,9 @@ for_window [class="^.*"] border pixel 2
 
 # set floating
 for_window [window_role="pop-up"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="vlc"] floating enable
 
 # Set function keys
 bindsym XF86MonBrightnessUp exec ~/bin/backlight +2
