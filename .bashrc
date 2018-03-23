@@ -12,6 +12,7 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias irc='ssh server -t "tmux at -t Chat"'
 alias suntime='~/bin/sunwait -p 30.2672N 97.7431W'
+alias xclip='xclip -selection "clipboard"'
 
 # base 16
 

@@ -63,7 +63,15 @@ class_msg = class_info['title']
 start_time = class_info['start']
 end_time = class_info['end']
 
-if (start_time - curr_time).seconds/60 < 5:
-    set_curr_status(away=True, message="Class: " + class_info)
-elif (curr_time - end_time).seconds/60 < 5:
+if abs((start_time - curr_time).total_seconds()/60) < 15 or abs((curr_time \
+        - start_time).total_seconds()/60) < 15:
+    set_curr_status(away=True, message="Class: " + class_msg)
+    print curr_time.isoformat() + ". Starting class: " \
+        + class_msg + ". from " + start_time.isoformat() \
+        + " to " + end_time.isoformat()
+elif abs((curr_time - end_time).total_seconds()/60) < 15 or abs((end_time \
+        - curr_time).total_seconds()/60) < 15:
     set_curr_status(away=False, message="")
+    print curr_time.isoformat() + ". Ending class: " \
+        + class_msg + ". from " + start_time.isoformat() \
+        + " to " + end_time.isoformat()
