@@ -1,0 +1,16 @@
+source "gpg -d ~/.mutt/passwords.gpg |"
+set imap_user           = "josephvoss14@gmail.com"
+set imap_keepalive      = 30
+unset imap_passive                             # allow mutt to open new imap connection automatically
+set folder              = "imaps://imap.gmail.com"
+set spoolfile           = "+[Gmail]/All Mail"
+set postponed           = "+[Gmail]/Drafts"
+set header_cache        = ~/.mutt/josephvoss14/headers
+set message_cachedir    = ~/.mutt/josephvoss14/bodies
+set certificate_file    = ~/.mutt/certificates
+set smtp_url            = "smtp://josephvoss14@smtp.gmail.com:587/"
+set move                = no
+set sort                = reverse-date-received
+
+bind index G imap-fetch-mail
+
