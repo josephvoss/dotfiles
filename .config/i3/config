@@ -226,3 +226,6 @@ bindsym $mod+Shift+s exec scrot
 
 # Set Pause/Play button
 bindsym $mod+p exec mpc toggle
+
+# run passmenu
+bindsym $mod+Shift+p exec passmenu
