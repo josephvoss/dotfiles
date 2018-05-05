@@ -43,3 +43,9 @@ Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 colorscheme wal
+
+au BufNewfile,BufRead *.page set filetype=markdown
+
+" Mutt Config
+autocmd BufNewFile,BufRead /tmp/mutt* set noautoindent filetype=mail wm=0 tw=80 nonumber digraph nolist
+autocmd BufNewFile,BufRead ~/tmp/mutt* set noautoindent filetype=mail wm=0 tw=80 nonumber digraph nolist

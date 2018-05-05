@@ -10,7 +10,11 @@ set message_cachedir    = ~/.mutt/josephvoss14/bodies
 set certificate_file    = ~/.mutt/certificates
 set smtp_url            = "smtp://josephvoss14@smtp.gmail.com:587/"
 set move                = no
-set sort                = reverse-date-received
+set sort                = threads
+set strict_threads      = yes
+set sort_browser        = reverse-date
+set sort_aux            = reverse-last-date-received
 
 bind index G imap-fetch-mail
+set signature           = ~/.signature
 
