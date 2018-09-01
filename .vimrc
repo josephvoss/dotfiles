@@ -3,13 +3,14 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim/'
-Plug 'tpope/vim-unimpaired'
+Plug 'josephvoss/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'rodjek/puppet'
 Plug 'vim-syntastic/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go', { 'tag': 'v1.17' }
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
