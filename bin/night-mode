@@ -15,4 +15,4 @@ number=$(($(($old_number + 1)) % ${#arr[@]}))
 sed -i "s/night: .*/night: $number/" /tmp/wal_numbers.txt
 
 file=${arr[$number]}
-~/.local/bin/wal -t -a 75 -o ~/bin/wal-set -i $file
+/usr/local/bin/wal -t -a 75 -o ~/bin/wal-set -i $file
