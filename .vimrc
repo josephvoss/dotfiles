@@ -12,6 +12,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go', { 'tag': 'v1.17' }
 Plug 'junegunn/goyo.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
 
 call plug#end()
 
@@ -95,3 +97,9 @@ autocmd BufNewFile,BufRead ~/tmp/mutt* set noautoindent filetype=mail wm=0 tw=80
 " Folding
 set fdm=syntax
 set nofoldenable
+
+" Vim Wiki settings
+let wiki_technical = {"path":'~/git/wiki-technical/', 'nested_syntaxes':{'python':'python', 'c++':'cpp', 'yaml':'yaml'}}
+let wiki_personal = {"path":'~/git/wiki-personal/', 'syntax': 'markdown', 'ext': '.md'}
+let g:vimwiki_list = [wiki_personal,wiki_technical]
+au BufNewFile ~/git/wiki-personal/diary/*.md :silent 0r !~/bin/vimwiki-diary-template.py '%'
