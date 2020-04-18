@@ -1,0 +1,69 @@
+call plug#begin()
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim/'
+Plug 'josephvoss/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'mhinz/vim-signify'
+Plug 'rodjek/vim-puppet'
+Plug 'vim-syntastic/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'fatih/vim-go', { 'tag': 'v1.17' }
+Plug 'junegunn/goyo.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
+Plug 'jamessan/vim-gnupg'
+
+call plug#end()
+
+execute pathogen#infect()
+
+" Airline Themes
+
+"let g:airline_theme='base16_isotope'
+"let g:airline_theme='base16_tomorrow'
+let g:airline_theme='wal'
+let g:airline_powerline_fonts='1'
+let g:airline#extensions#tabline#enabled = 1
+
+" Signify
+let g:signify_vcs_list = ["git"]
+
+" Syntastic garbage
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_puppet_checkers = ['puppet']
+let g:syntastic_go_checkers = ['go']
+
+let g:go_version_warning = 0
+
+let base16colorspace=256
+
+" Git branch helper
+command BranchOpen args `git diff --name-only origin/production`
+
+" Close netrw buffers
+autocmd FileType netrw setl bufhidden=wipe
+
+" Mutt Config
+autocmd BufNewFile,BufRead /tmp/mutt* set noautoindent filetype=mail wm=0 tw=80 nonumber digraph nolist spell
+autocmd BufNewFile,BufRead ~/tmp/mutt* set noautoindent filetype=mail wm=0 tw=80 nonumber digraph nolist spell
+
+" GnuGP settings
+let g:GPGPreferArmor=1
+let g:GPGDefaultRecipients=["jvoss@josephvoss.com"]
+
+" Vim Wiki settings
+let wiki_technical = {"path":'~/git/wiki-technical/', 'nested_syntaxes':{'python':'python', 'c++':'cpp', 'yaml':'yaml'}}
+let wiki_personal = {"path":'~/git/wiki-personal/', 'syntax': 'markdown'}
+"let wiki_personal = {"path":'~/git/wiki-personal/', 'syntax': 'markdown', 'ext': '.md'}
+let g:vimwiki_list = [wiki_personal,wiki_technical]
+au BufNewFile ~/git/wiki-personal/diary/*.md :silent 0r !~/bin/vimwiki-diary-template.py '%'

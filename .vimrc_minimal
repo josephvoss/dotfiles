@@ -1,0 +1,67 @@
+" minimal vimrc for my sanity
+
+" line numbers
+set relativenumber
+set number
+
+set fillchars+=vert:\│
+hi VertSplit ctermfg=Black ctermbg=DarkGray
+
+set laststatus=2
+
+set background=dark
+syntax on
+filetype plugin indent on
+
+" cursor centered lined
+set so=999
+set cursorline
+
+" highlight all on glob match
+set hlsearch
+
+" Don't complain about switching buffers
+set hidden
+
+" jk == esc 
+:inoremap jk <Esc>
+:vnoremap jk <Esc>
+:nnoremap jk <Esc>
+set timeoutlen=250 ttimeoutlen=0
+
+" Wildmenu settings
+set wildmode=list:longest,full
+set wildmenu
+
+" show existing tab with 4 spaces width
+set tabstop=2
+set softtabstop=0
+" when indenting with '>', use 4 spaces width
+set shiftwidth=2
+" upon pressing tab, insert 4 spaces
+set expandtab
+
+set backspace=indent,eol,start
+
+" fold commands
+set foldmethod=syntax
+set nofoldenable
+
+" Enable scrolling
+set mouse=a
+
+au BufNewfile,BufRead *.page set filetype=markdown
+
+" Add modeline function
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+    \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" vim: set ts=2 sw=2 tw=78 et :
