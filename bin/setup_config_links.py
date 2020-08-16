@@ -13,6 +13,7 @@ home_dir = os.environ['HOME']
 # Map of links to build, from home to config dir location
 link_map = {
         "{}/.bashrc".format(home_dir): "{}/bashrc".format(config_dir),
+        "{}/.inputrc".format(home_dir): "{}/inputrc".format(config_dir),
         "{}/.vimrc".format(home_dir): "{}/vimrc".format(config_dir),
         "{}/.vimrc_minimal".format(home_dir): "{}/vimrc_minimal".format(config_dir),
         "{}/.vimrc_plugins".format(home_dir): "{}/vimrc_plugins".format(config_dir),
@@ -21,8 +22,6 @@ link_map = {
         "{}/.tmux_vim.conf".format(home_dir): "{}/tmux/vim.conf".format(config_dir),
         "{}/.tmux_airline_isotope.conf".format(home_dir): "{}/tmux/airline_isotope.conf".format(config_dir),
         "{}/.tmux_airline_wal.conf".format(home_dir): "{}/tmux/airline_wal.conf".format(config_dir),
-        "{}/.tmux_lakeside.conf".format(home_dir): "{}/tmux/lakeside.conf".format(config_dir),
-        "{}/.ssh/config".format(home_dir): "{}/ssh/config".format(config_dir),
         "{}/.ssh/authorized_keys".format(home_dir): "{}/ssh/authorized_keys".format(config_dir),
         "{}/.ssh/known_hosts".format(home_dir): "{}/ssh/known_hosts".format(config_dir),
         }

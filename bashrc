@@ -21,12 +21,14 @@ ssh-gpg() {
 
 # User specific aliases and functions
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias irc='ssh server -t "tmux at -t Chat"'
 alias suntime='~/bin/sunwait -p 30.2672N 97.7431W'
 alias xclip='xclip -selection "clipboard"'
 
 alias docker=podman
+
+# Add path for config mount
+export PATH=$PATH:/config/bin
+
 # base 16
 
 #BASE16_SHELL=$HOME/.config/base16-shell/
@@ -51,11 +53,10 @@ set -o vi
 bind '"jk":vi-movement-mode'
 bind -f ~/.inputrc
 
-# Start gpg-agent
-gpg-agent &> /dev/null
-if [[ $? != "0" ]]; then eval $(gpg-agent --daemon); fi
+if [[ -e ~/.cache/wal/sequences ]]; then
+  (cat ~/.cache/wal/sequences &)
+fi
 
-
-(cat ~/.cache/wal/sequences &)
-
-eval $(keychain --eval id_rsa)
+if [[ -e $(which keychain 2> /dev/null) ]]; then
+  eval $(keychain --agents ssh,gpg --eval id_rsa)
+fi
