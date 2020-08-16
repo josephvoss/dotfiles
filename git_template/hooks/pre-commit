@@ -1,0 +1,14 @@
+#!/bin/bash
+# Global pre-commit hook to check for trailing whitespace and output affected
+# files
+#
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+  against=HEAD
+else
+  # Initial commit: diff against an empty tree object
+  against=$(git hash-object -t tree /dev/null)
+fi
+
+git diff-index --check --cached $against --color

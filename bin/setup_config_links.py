@@ -24,6 +24,8 @@ link_map = {
         "{}/.tmux_airline_wal.conf".format(home_dir): "{}/tmux/airline_wal.conf".format(config_dir),
         "{}/.ssh/authorized_keys".format(home_dir): "{}/ssh/authorized_keys".format(config_dir),
         "{}/.ssh/known_hosts".format(home_dir): "{}/ssh/known_hosts".format(config_dir),
+        "{}/.gitconfig".format(home_dir): "{}/gitconfig".format(config_dir),
+        "{}/.local/share/bash/custom-git-ps1.sh".format(home_dir): "{}/local/share/bash/custom-git-ps1.sh".format(config_dir),
         }
 
 # Recursively create directories for a path, mkdir -p

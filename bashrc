@@ -16,6 +16,18 @@ ssh-gpg() {
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 }
 
+# Use ssh auth sock if it exists
+if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
+  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
+
+export PS1="[\u@\h:\W ]$ "
+
+# Use faster git-prompt. Adds some time to all shell commands, but like 1ms
+. ~/.local/share/bash/custom-git-ps1.sh
+export PS1='[\u@\h:\W $(__custom_git_ps1)]\$ '
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
