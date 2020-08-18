@@ -13,6 +13,7 @@ home_dir = os.environ['HOME']
 # Map of links to build, from home to config dir location
 link_map = {
         "{}/.bashrc".format(home_dir): "{}/bashrc".format(config_dir),
+        "{}/.bash_profile".format(home_dir): "{}/bash_profile".format(config_dir),
         "{}/.inputrc".format(home_dir): "{}/inputrc".format(config_dir),
         "{}/.vimrc".format(home_dir): "{}/vimrc".format(config_dir),
         "{}/.vimrc_minimal".format(home_dir): "{}/vimrc_minimal".format(config_dir),
