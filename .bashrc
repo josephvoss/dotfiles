@@ -33,6 +33,7 @@ export PS1='[\u@\h:\W $(__custom_git_ps1)]\$ '
 
 # User specific aliases and functions
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+alias config="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias suntime='~/.local/bin/sunwait -p 30.2672N 97.7431W'
 alias xclip='xclip -selection "clipboard"'
 
@@ -63,8 +64,8 @@ set bell-style visible
 
 set -o vi
 bind '"jk":vi-movement-mode'
-bind -f ~/.inputrc
 
 if [[ -e $(which keychain 2> /dev/null) ]]; then
-  eval $(keychain --agents ssh,gpg --eval id_rsa)
+  eval $(keychain --agents ssh,gpg)
 fi
+export EDITOR=vim
