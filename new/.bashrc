@@ -1,7 +1,7 @@
 # .bashrc
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+  . /etc/bashrc
 fi
 
 # Clear/Add smart card using the opensc libraries
@@ -33,13 +33,13 @@ export PS1='[\u@\h:\W $(__custom_git_ps1)]\$ '
 
 # User specific aliases and functions
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
-alias suntime='~/bin/sunwait -p 30.2672N 97.7431W'
+alias suntime='~/.local/bin/sunwait -p 30.2672N 97.7431W'
 alias xclip='xclip -selection "clipboard"'
 
-alias docker=podman
+#alias docker=podman
 
 # Add path for config mount
-export PATH=$PATH:/config/bin
+export PATH=$PATH:~/.local/bin
 
 # base 16
 
@@ -64,10 +64,6 @@ set bell-style visible
 set -o vi
 bind '"jk":vi-movement-mode'
 bind -f ~/.inputrc
-
-if [[ -e ~/.cache/wal/sequences ]]; then
-  (cat ~/.cache/wal/sequences &)
-fi
 
 if [[ -e $(which keychain 2> /dev/null) ]]; then
   eval $(keychain --agents ssh,gpg --eval id_rsa)

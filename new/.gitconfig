@@ -12,8 +12,8 @@
   decorate = full
 [core]
   excludefiles = *.swp
-  hooksPath = /config/git_template/hooks/
+  hooksPath = ~/.config/git_template/hooks/
 [push]
   default = simple
 [init]
-  templatedir = /config/git_template
+  templatedir = ~/.config/git_template
