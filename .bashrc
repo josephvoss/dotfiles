@@ -16,56 +16,33 @@ ssh-gpg() {
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 }
 
-# Use ssh auth sock if it exists
-if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
+# This most important line in this whole thing
+alias config="git --work-tree=$HOME/ --git-dir=$HOME/.config/config-git/"
+
+set -o vi
+bind '"jk":vi-movement-mode'
+bind -f ~/.inputrc
+
+# Setup gpg tty
+export GPG_TTY=$(tty)
+if ! pgrep -x "gpg-agent" > /dev/null; then
+  gpg-agent --daemon > /dev/null 2>&1
 fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 
-export PS1="[\u@\h:\W ]$ "
+export TERMINAL='st'
+export EDITOR="nvim"
 
-# Use faster git-prompt. Adds some time to all shell commands, but like 1ms
-. ~/.local/share/bash/custom-git-ps1.sh
-export PS1='[\u@\h:\W $(__custom_git_ps1)]\$ '
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+export NVM_DIR="$HOME/.nvm"
 
 # User specific aliases and functions
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias config="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias suntime='~/.local/bin/sunwait -p 30.2672N 97.7431W'
 alias xclip='xclip -selection "clipboard"'
-
-#alias docker=podman
-
-# Add path for config mount
-export PATH=$PATH:~/.local/bin
-
-# base 16
-
-#BASE16_SHELL=$HOME/.config/base16-shell/
-
-#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-#export TERMINAL=urxvt256c
-#export TERMINAL=gnome-terminal
-export TERMINAL='st'
-
-
-if [ $TERM == 'rxvt-unicode-256color' ]; then
-    export PS1="\[\033]0;\w\007\]$PS1"
-fi
+alias docker=podman
 
 set bell-style visible
 
-#BASE16_SHELL=$HOME/.config/base16-shell/
-#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-#base16_material-darker
+source "$HOME/.local/share/bash/custom-git-ps1.sh"
 
-set -o vi
-bind '"jk":vi-movement-mode'
-
-if [[ -e $(which keychain 2> /dev/null) ]]; then
-  eval $(keychain --agents ssh,gpg)
-fi
-export EDITOR=vim
+export PS1='[\u@\h:\W $(__custom_git_ps1)]\$ '
